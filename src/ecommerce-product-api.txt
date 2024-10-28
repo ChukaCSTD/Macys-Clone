@@ -1,0 +1,553 @@
+BASE_URL http://ecommerce.reworkstaging.name.ng/v2
+
+==========
+Merchant
+==========
+
+POST /merchants
+DESCP: To create a merchant who will kick starts the whole process
+{
+	"first_name":"John",
+	"last_name":"Doe",
+	"email":"ap@gmail.com",
+	"phone":"0901234567",
+	"store_name":"Nicolas Aluminium",
+	"descp":"All is well that ends well",
+	"icon":"",
+	"banner":"",
+	"phones":[098767887,98657654]
+	"password":"123"
+}
+
+POST /merchants/login
+DESCP: To login a user
+{
+	"email":"ap@gmail.com",
+	"password":"123"
+}
+
+
+PUT /merchants/:merchant_id
+DESCP: To update a merchant information
+{
+	"first_name":"John",
+	"last_name":"Doe",
+	"email":"ap@gmail.com",
+	"phone":"0901234567",
+	"store_name":"Nicolas Aluminium",
+	"descp":"All is well that ends well",
+	"icon":"",
+	"banner":"",
+	 "state": "",
+    	"district": "",
+    	"social_media": {
+        		"x": "",
+        		"face_book": "",
+        		"instagram": ""
+    	},
+	"phones":[098767887,98657654]
+}
+
+
+PUT /merchants/:merchant_id/change-passwd
+DESCP: To update a merchant password
+{
+	"old_password":"321",
+	"new_password":"123"
+}
+
+
+==========
+User
+==========
+
+
+GET /users/orders?user_id=123
+DESCP: To get all the orders made by user
+
+GET /users/reviews?user_id=123
+DESCP: To get all the reviews made by user
+
+GET /users/ratings?user_id=123
+DESCP: To get all the ratings made by user
+
+GET /users/likes?user_id=123
+DESCP: To get all the likes made by user
+
+POST /users
+DESCP: To create a user to sign up to the merchant application
+{
+	"first_name":"John",
+	"last_name":"Doe",
+	"email":"ap@gmail.com",
+	"phone":"0901234567",
+	"password":"123"
+}
+
+PUT /users/:user_id
+DESCP: To update a user information
+{
+	"first_name":"John",
+	"last_name":"Doe",
+	"email":"ap@gmail.com",
+	"phone":"0901234567"
+}
+
+PUT /users/:user_id/change-passwd
+DESCP: To change user password
+{
+	"old_password":"321",
+	"new_password":"123"
+}
+
+
+POST /users/login
+{
+	"email":"ap@gmail.com",
+	"password":"123"
+}
+
+
+=========
+Review
+=========
+
+
+GET /reviews?product_id=123
+DESCP: Gets all the review for a product
+
+
+POST /reviews
+DESCP: To create a review for the product
+BODY 
+{
+	"product_id":"123",
+	"user_id":"321",
+	"text":"This item is so bad"
+}
+
+PUT /reviews/:review_id
+DESCP: To update a particular review
+BODY 
+{
+	"user_id":"321",
+	"text":"This item is so bad again"
+}
+
+
+DELETE /reviews
+DESCP: To delete a particular review
+BODY
+{
+	"review_id":"123",
+	"user_id":"321"
+}
+
+
+
+=========
+Rating
+=========
+
+
+GET /ratings?product_id=123
+DESCP: Gets all the rating for a product
+
+
+POST /ratings
+DESCP: To create a rating for the product
+BODY 
+{
+	"product_id":"123",
+	"user_id":"321",
+	"text":"Good",
+	"value":3
+}
+
+PUT /ratings
+DESCP: To update a particular review
+BODY 
+{
+	"product_id":"123",
+	"user_id":"321",
+	"text":"Good",
+	"value":3
+}
+
+
+DELETE /ratings
+DESCP: To delete a particular rating
+BODY
+{
+	"product_id":"123",
+	"user_id":"321"
+}
+
+
+
+=========
+Like
+=========
+
+
+GET /likrd?product_id=123
+DESCP: Gets all the user who liked a product
+
+
+POST /likes
+DESCP: To create a like on a product
+BODY 
+{
+	"product_id":"123",
+	"user_id":"321"
+}
+
+DELETE /likes
+DESCP: To delete a particular review
+BODY
+{
+	"product_id":"123",
+	"user_id":"321"
+}
+
+
+
+
+==========
+Product
+==========
+
+GET /products?merchant_id=123&category_id=321
+DESCP: Get all product for a particular merchant and belonging to a particular category
+
+GET /products?merchant_id=123
+DESCP: Get all product for a particular merchant
+
+
+GET /products/:product_id
+DESCP: Get a particular product information
+
+
+POST /products
+DESCP: Create a product without variation
+
+{
+    "title": "Men Show",
+    "descp": "2023 New Arrival Casual Style Men shoe light weight wholesale men summer breathable sneakers custom logo running sports shoes",
+    "price": 25930.67,
+    "brand": "Samsung",
+    "quantity": 100,
+    "images": [
+        "https://s.alicdn.com/@sc04/kf/H8700687947a44b3fbfd55a09bae5b7fee.jpg"
+    ],
+    "currency": "NGN",
+    "min_qty": 2,
+    "max_qty": 5,
+    "discount": 0,
+    "discount_expiration": "",
+    "has_refund_policy": false,
+    "has_discount": false,
+    "has_shipment": true,
+    "has_variation": false,
+    "shipping_locations": [
+        "Nigeria",
+        "Ghana",
+        "Egypt"
+    ],
+    "attrib": [
+        {
+            "type": "Other",
+            "content": [
+                {
+                    "name": "Place of Origin",
+                    "value": "Fujian, China"
+                },
+                {
+                    "name": "Brand Name",
+                    "value": "Ts-013"
+                },
+                {
+                    "name": "Midsole Material",
+                    "value": "PVC"
+                },
+                {
+                    "name": "Season",
+                    "value": "Winter, Summer, Spring, Autumm"
+                },
+                {
+                    "name": "Gender",
+                    "value": "Men"
+                }
+            ]
+        },
+        {
+            "type": "Supply Ability",
+            "content": [
+                {
+                    "name": "Supply Ability",
+                    "value": "1000 Box/Boxes per Month"
+                }
+            ]
+        }
+    ],
+    "category_id": "123",
+    "merchant_id": "111"
+}
+
+
+
+POST /products
+DESCP: Create a production with variation
+NB
+Types of variation
+	- color
+	- size
+BODY
+{
+    "title": "Men Show",
+    "descp": "2023 New Arrival Casual Style Men shoe light weight wholesale men summer breathable sneakers custom logo running sports shoes",
+    "price": 25930.67,
+    "brand": "Samsung",
+    "quantity": 100,
+    "images": [
+        "https://s.alicdn.com/@sc04/kf/H8700687947a44b3fbfd55a09bae5b7fee.jpg"
+    ],
+    "currency": "NGN",
+    "min_qty": 2,
+    "max_qty": 5,
+    "discount": 0,
+    "discount_expiration": "",
+    "has_refund_policy": false,
+    "has_discount": false,
+    "has_shipment": true,
+    "has_variation": true,
+    "shipping_locations": [
+        "Nigeria",
+        "Ghana",
+        "Egypt"
+    ],
+    "attrib": [
+        {
+            "type": "Other",
+            "content": [
+                {
+                    "name": "Place of Origin",
+                    "value": "Fujian, China"
+                },
+                {
+                    "name": "Brand Name",
+                    "value": "Ts-013"
+                },
+                {
+                    "name": "Midsole Material",
+                    "value": "PVC"
+                },
+                {
+                    "name": "Season",
+                    "value": "Winter, Summer, Spring, Autumm"
+                },
+                {
+                    "name": "Gender",
+                    "value": "Men"
+                }
+            ]
+        },
+        {
+            "type": "Supply Ability",
+            "content": [
+                {
+                    "name": "Supply Ability",
+                    "value": "1000 Box/Boxes per Month"
+                }
+            ]
+        }
+    ],
+    "variations": [
+        {
+            "type": "color",
+            "text": "Color",
+            "content": [
+                {
+                    "display": [
+                        {
+                            "type": "image",
+                            "value": "https://color-1.png"
+                        }
+                    ],
+                    "text": "White"
+                },
+                {
+                    "display": [
+                        {
+                            "type": "image",
+                            "value": "https://color-2.png"
+                        }
+                    ],
+                    "text": "White Gray"
+                },
+                {
+                    "display": [
+                        {
+                            "type": "image",
+                            "value": "https://color-3.png"
+                        }
+                    ],
+                    "text": "Black"
+                }
+            ]
+        },
+        {
+            "type": "size",
+            "text": "EUR Size",
+            "content": [
+                {
+                    "display": [
+                        {
+                            "type": "image",
+                            "value": "https://color-3.png"
+                        },
+                        {
+                            "type": "text",
+                            "value": "39"
+                        }
+                    ],
+                    "text": 5303.34
+                },
+                {
+                    "display": [
+                        {
+                            "type": "text",
+                            "value": "40"
+                        }
+                    ],
+                    "text": 5303.34
+                },
+                {
+                    "display": [
+                        {
+                            "type": "text",
+                            "value": "41"
+                        }
+                    ],
+                    "text": 5303.34
+                },
+                {
+                    "display": [
+                        {
+                            "type": "text",
+                            "value": "42"
+                        }
+                    ],
+                    "text": 5303.34
+                },
+                {
+                    "display": [
+                        {
+                            "type": "text",
+                            "value": "43"
+                        }
+                    ],
+                    "text": 5303.34
+                }
+            ]
+        }
+    ],
+    "category_id": "123",
+    "merchant_id": "111"
+}
+
+
+
+==========
+Category
+==========
+
+POST /categories
+DESCP: To create the category for the product
+BODY
+{
+    "merchant_id":"111",
+    "name": "Bags",
+    "image":"https://s.alicdn.com/@img/imgextra/i3/O1CN01gRUkNN1sW5HWJb8Me_!!6000000005773-2-tps-200-200.png"
+}
+
+GET /categories?merchant_id=111
+DESCP: To get all categories for a particular merchant
+
+
+
+PUT /categories/:category_id
+DESCP: To create the category for the product
+BODY
+{
+    "name": "Bags",
+    "image":"https://s.alicdn.com/@img/imgextra/i3/O1CN01gRUkNN1sW5HWJb8Me_!!6000000005773-2-tps-200-200.png"
+}
+
+
+DELETE /categories/:category_id
+DESCP: To delete a particular category
+
+
+
+==========
+Cart
+==========
+
+GET /carts?user_id=321
+DESCP: To get a users cart
+
+
+POST /carts
+DESCP: Create a content in a cart with variation
+BODY
+{
+    "user_id": "321",
+    "product_id": "111",
+    "has_variation": true,
+    "variation": {
+        "quantity": 3,
+        "color_index": 0,
+        "size_index": 1
+    }
+}
+
+POST /carts
+DESCP: Create a content and update item in a cart without variation
+BODY
+{
+    "quantity": 2,
+    "user_id": "321",
+    "product_id": "111",
+    "has_variation":false
+}
+
+POST /carts/set-note
+DESCP: To add note to cart
+BODY
+{
+     "user_id":"321",
+     "note":"abc lorem"
+}
+
+
+POST /carts/checkout
+DESCP: To checkout the item in a cart
+BODY
+{
+     "user_id":"321"
+}
+
+DELETE /carts
+DESCP: To delete a cart content
+{
+    "user_id": "321"
+}
+
+
+
+GET /sales?merchant_id=123
+DESCP: To get all the sales a merchant has made
+
+
+
