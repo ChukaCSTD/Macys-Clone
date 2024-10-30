@@ -7,11 +7,16 @@ const DashboardProvider = ({ children }) => {
   const [merchantId, setMerchantId] = useState(null);
   const [products, setProducts] = useState([]);
 
+  const userdetails = JSON.parse(localStorage.getItem('userData'));
+  const userID = userdetails ? userdetails.id : null;
+  console.log(userID);
+
   // Load initial data from localStorage
   useEffect(() => {
     const storedUserData = localStorage.getItem('userData');
     const storedMerchantId = localStorage.getItem('merchantId');
     const storedProducts = localStorage.getItem('products');
+   
     
     if (storedUserData) {
       setUser(JSON.parse(storedUserData));

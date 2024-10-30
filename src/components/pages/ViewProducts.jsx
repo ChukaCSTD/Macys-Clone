@@ -112,9 +112,9 @@ const ViewProducts = ({ products: initialProducts, categories, onCategoryFilter 
           {products.map((product) => (
             <div key={product.id} className="bg-white p-4 rounded-lg shadow">
               <img
-                src={product.images && product.images.length > 0 ? product.images[0] : 'placeholder-image-url'}
+                src={product.images && product.images.length > 0 ? product.images[0] : product.imageUrl}
                 alt={product.title}
-                className="w-full h-48 object-cover mb-2 rounded"
+                className="w-full h-48 object-contain mb-2 rounded"
               />
               {editedProductId === product.id ? (
                 <div className="space-y-2">
@@ -151,8 +151,8 @@ const ViewProducts = ({ products: initialProducts, categories, onCategoryFilter 
                 <>
                   <h3 className="text-lg font-semibold">{product.title}</h3>
                   <p className="text-gray-600 truncate">{product.descp}</p>
-                  <p className="text-blue-600 font-bold mt-2">{product.price} {product.currency}</p>
-                  <p className="text-gray-500 text-sm">Category: {product.category_name}</p>
+                  <p className="text-blue-600 font-bold mt-2">USD {product.price}.00 {product.currency}</p>
+                  <p className="text-gray-500 text-sm">Category: {product.category_name || 'not assigned a category'}</p>
                   <p className="text-gray-500 text-sm">Stock: {product.stock}</p>
                   <div className="flex space-x-2 mt-2">
                     <button
